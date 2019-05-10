@@ -42,13 +42,13 @@
 
 <body class="text-center">
 
-    <form class="form-signin">
+    <form action="/" method="POST" class="form-signin">
         <img class="mb-4" src="image/message.svg" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Signup to my Newsletter</h1>
 
-        <input type="text"  class="form-control top" placeholder="First Name" required autofocus>
-        <input type="text"  class="form-control middle" placeholder="Last Name" required>
-        <input type="email" class="form-control bottom" placeholder="Email address" required >
+        <input type="text" name="firstName" class="form-control top" placeholder="First Name" required autofocus>
+        <input type="text" name="lastName" class="form-control middle" placeholder="Last Name" required>
+        <input type="email" name="email" class="form-control bottom" placeholder="Email address" required >
 
 
         <div class="checkbox mb-3">
