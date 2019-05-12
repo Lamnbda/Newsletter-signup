@@ -5,7 +5,7 @@ var request = require('request');
 var app = express();
 
 var myKey = config.my_Key;
-var ListID = config.listId; //refers to the object.
+var ListID = config.listId;
 
 app.use(bodyparser.urlencoded({
     extended: true
@@ -40,10 +40,10 @@ app.post('/', function (req, res) {
 console.log(firstName, lastName, email)
 
 var options = {
-    url: "https://us20.api.mailchimp.com/3.0/lists/" + ListID,
+    url: "https://us20.api.mailchimp.com/3.0/lists/6227e1a193",
     method: "POST", 
     headers: {
-        "Authorization": "vincent1 " + myKey
+        "Authorization": "vincent1 a06d629d471a7dbb668471561fb9f2d6-us20"
     },
     body: jsonData
 }
