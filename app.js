@@ -4,8 +4,8 @@ var request = require('request');
 
 var app = express();
 
-var myKey = config.my_Key;
-var ListID = config.listId;
+//ar myKey = config.my_Key;
+//var ListID = config.listId;
 
 app.use(bodyparser.urlencoded({
     extended: true
@@ -56,9 +56,9 @@ if(error){
 else{
     console.log(response.statusCode)
     if (response.statusCode === 200){
-        res.sendfile(__dirname + "/success.html")
+        res.sendFile(__dirname + "/success.html")
     } else{
-        res.sendfile(__dirname + "/failure.html");
+        res.sendFile(__dirname + "/failure.html");
     }
 }
 })
