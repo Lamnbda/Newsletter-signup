@@ -4,6 +4,9 @@ var request = require('request');
 
 var app = express();
 
+var myKey = config.my_Key;
+var ListID = config.listId; //refers to the object.
+
 app.use(bodyparser.urlencoded({
     extended: true
 }));
@@ -37,20 +40,26 @@ app.post('/', function (req, res) {
 console.log(firstName, lastName, email)
 
 var options = {
-    url: "https://us20.api.mailchimp.com/3.0/lists/6227e1a193",
+    url: "https://us20.api.mailchimp.com/3.0/lists/" + ListID,
     method: "POST", 
     headers: {
-        "Authorization": "vincent1 a06d629d471a7dbb668471561fb9f2d6-us20"
+        "Authorization": "vincent1 " + myKey
     },
     body: jsonData
 }
 
 request(options, function(error,response,body){
-if (error){
-    console.log(error);
+
+if(error){
+  res.sendfile(__dirname + "/failure.html")
 }
 else{
     console.log(response.statusCode)
+    if (response.statusCode === 200){
+        res.sendfile(__dirname + "/success.html")
+    } else{
+        res.sendfile(__dirname + "/failure.html");
+    }
 }
 })
 })
@@ -59,6 +68,6 @@ app.listen(3000, function () {
     console.log("The server is online")
 });
 
-//a06d629d471a7dbb668471561fb9f2d6-us20
+//
 //ListID
-//6227e1a193
+//
