@@ -19,7 +19,40 @@ app.post('/', function (req, res) {
     var firstName = req.body.firstName;
     var lastName = req.body.lastName;
     var email = req.body.email;
+    var data = {
+        members: [
+            {
+            email_address: email,
+            status: "subscribed",
+            merge_fields: {
+                FNAME: firstName,
+                LNAME: lastName
+            }
+        }
+    ]
+    };
+
+     var jsonData = JSON.stringify(data);
+
 console.log(firstName, lastName, email)
+
+var options = {
+    url: "https://us20.api.mailchimp.com/3.0/lists/6227e1a193",
+    method: "POST", 
+    headers: {
+        "Authorization": "vincent1 a06d629d471a7dbb668471561fb9f2d6-us20"
+    },
+    body: jsonData
+}
+
+request(options, function(error,response,body){
+if (error){
+    console.log(error);
+}
+else{
+    console.log(response.statusCode)
+}
+})
 })
 
 app.listen(3000, function () {
@@ -27,3 +60,5 @@ app.listen(3000, function () {
 });
 
 //a06d629d471a7dbb668471561fb9f2d6-us20
+//ListID
+//6227e1a193
